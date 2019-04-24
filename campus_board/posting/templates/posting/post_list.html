@@ -1,0 +1,15 @@
+
+{% extends "posting/base.html" %}
+
+{% block content %}
+
+    <h2>{{ object.post_type }}</h2>
+
+    {% for post in posts %}
+        <h3><a href="{% url 'detail' post.id %}">{{ post.title }}</a></h3>
+        <p><strong>Author: </strong>{{ post.username }}</p>
+        <p><strong>Date Posted: </strong>{{ post.post_date }}</p>
+    {% endfor %}
+
+{% endblock %}
+
