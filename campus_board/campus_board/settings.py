@@ -132,7 +132,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 
-""" Production settings for Heroku"""
+
+""" 
+Production settings for Heroku
+"""
+
 django_heroku.settings(locals())
 
 # Heroku: Update database configuration from $DATABASE_URL.
