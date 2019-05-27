@@ -134,8 +134,8 @@ STATIC_URL = '/static/'
 
 
 """ 
-Production settings for Heroku
-"""
+Production settings for Heroku.
+""" 
 
 django_heroku.settings(locals())
 
