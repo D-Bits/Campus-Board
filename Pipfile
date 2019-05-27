@@ -6,10 +6,10 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-psycopg2 = "==2.7.7"
-pylint = "==2.2.2"
-Django = "*"
-
+gunicorn = "*"
+django-heroku = "*"
+install = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.6"

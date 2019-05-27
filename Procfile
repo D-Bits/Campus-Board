@@ -1,0 +1,1 @@
+web: gunicorn campus_board.wsgi
