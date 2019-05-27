@@ -8,7 +8,6 @@ verify_ssl = true
 [packages]
 gunicorn = "*"
 django-heroku = "*"
-install = "*"
 dj-database-url = "*"
 
 [requires]
