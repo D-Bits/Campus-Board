@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from . models import Post, Author
+from .models import Post, Author
 
 # Home page
 def index(request):
@@ -17,6 +17,7 @@ def index(request):
 class HousingList(ListView):
 
     model = Post
+    title = 'Housing'
     template_name = 'posting/post_list.html'
     context_object_name = 'posts'
     ordering = ['-post_date']
