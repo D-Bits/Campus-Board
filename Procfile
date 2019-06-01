@@ -1,1 +1,1 @@
-web: gunicorn campus_board.wsgi
+web: gunicorn campus_board.wsgi.application
