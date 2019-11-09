@@ -4,11 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% if title %}
-    <title>{{ title }} | Campus Posting Board</title>
-  {% else %}
-    <title>Campus Posting Board</title>
-  {% endif %}
+  <title>{% block title %} {% endblock %} | Campus Board</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -35,8 +31,13 @@
         <li class="active"><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
           <li><a href="{% url 'create-post' %}"><span class="glyphicon glyphicon-plus"></span> New Post</a></li>
-        <li><a href="{% url 'login'}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href=""><span class="glyphicon glyphicon-mail"></span> My Posts</a></li>
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView, DetailView
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -26,6 +26,7 @@ class HousingList(ListView):
 
         return Post.objects.filter(post_type='Housing')
 
+
 # List of all ridesharing posts
 class RideSharingList(ListView):
 
@@ -49,6 +50,22 @@ class SaleList(ListView):
     def get_queryset(self):
 
         return Post.objects.filter(post_type='Sale')
+
+
+# List all postings by the currently logged in user
+class UserPostsList(ListView, LoginRequiredMixin):
+
+    model = Post
+    template_name = 'registration/profile.html'
+    context_object_name = 'posts'
+    ordering = ['-post_date']
+
+    # Override default queryset to display posts by a specific user
+    def get_queryset(self):
+
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 # View specific post
 class PostDetail(DetailView):
